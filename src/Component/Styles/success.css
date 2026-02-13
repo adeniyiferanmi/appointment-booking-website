@@ -1,0 +1,106 @@
+.success-contain {
+  background-image: url(../assets/86b0b5e1-06d6-4230-bfe0-bdab16d2d0df.png);
+  display: flex;
+  padding-top: 160px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  padding-bottom: 50px;
+}
+.success-card {
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.checkmark {
+  width: 70px;
+  height: 70px;
+  background: rgb(157, 58, 90);
+  color: white;
+  font-size: 3rem;
+  font-weight: 600;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 15px;
+  font-family: "Playfair Display", serif;
+}
+.success-card h2 {
+  color: #333;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  font-family: "Playfair Display", serif;
+}
+.checkmark-paragraph {
+  color: #666;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  font-family: "Inter", sans-serif;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.452);
+  padding-bottom: 10px;
+}
+.success-service div {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 15px;
+}
+.success-service p {
+  font-family: "Inter", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  /* margin-top: 10px; */
+}
+.success-service button {
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  width: 100%;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: "Inter", sans-serif;
+  transition: background-color 0.3s ease;
+}
+.success-service button:hover {
+  background-color: rgb(157, 58, 90);
+  color: white;
+}
+.success-service h5 {
+  font-family: "Inter", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #333;
+}
+.appoint {
+  border: 2px solid rgb(157, 58, 90);
+  background-color: transparent;
+  color: rgb(157, 58, 90);
+  width: 100%;
+}
+.back {
+  background-color: rgb(245, 200, 66);
+  border: none;
+  width: 100%;
+}
+@media (max-width: 500px) {
+  .success-card h2 {
+    font-size: 1.4rem;
+  }
+.success-card p {
+  font-size: 0.9rem;
+}
+.success-card{
+  padding: 20px;
+}
+.success-service button {
+  font-size: 0.7rem;
+}
+}

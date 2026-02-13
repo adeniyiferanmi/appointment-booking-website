@@ -1,0 +1,141 @@
+.header-container {
+  padding-top: 15px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid rgb(243, 229, 240);
+  background-color: rgba(255, 255, 255, 0.918);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+.header-contain {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+.header-container ul {
+  padding-top: 20px;
+}
+.ul {
+  display: flex;
+  gap: 30px;
+}
+.ul a {
+  font-family: Inter, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 20px;
+  color: rgb(54, 52, 52);
+  position: relative;
+}
+.ul a:hover {
+  color: rgb(141, 14, 120);
+}
+.ul a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 1px;
+  background-color: currentColor;
+  transition: width 0.4s ease;
+}
+.ul a:hover::after {
+  width: 90%;
+}
+.ul-btn {
+  padding: 15px;
+  background-color: rgb(245, 200, 66);
+  margin-top: 7px;
+  font-weight: 500;
+  font-family: Inter, sans-serif;
+  color: rgb(54, 52, 52);
+}
+.ul-btn:hover {
+  background-color: rgb(139, 47, 123);
+  color: white;
+}
+.header-ul {
+  display: flex;
+  gap: 20px;
+}
+.icon-btn {
+  font-size: 2rem;
+  color: rgb(141, 14, 120);
+}
+.header-icon {
+  padding-top: 10px;
+  display: none;
+}
+.header-ul a {
+  display: block;
+}
+.second {
+  /* display: none; */
+}
+@media (max-width: 950px) {
+  .header-contain {
+    width: 90%;
+  }
+}
+@media (max-width: 800px) {
+  .header-ul {
+    display: none;
+  }
+
+  .header-icon {
+    display: block;
+  }
+  .header-ul .ul {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+  .second {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 40px;
+    position: fixed;
+    top: 100px;
+    left: 0;
+    right: 0;
+    background-color: white;
+    padding-bottom: 15px;
+  }
+  .second ul {
+    flex-direction: column;
+  }
+  .second ul a{
+    font-family: Inter, sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 20px;
+  color: rgb(54, 52, 52);
+  position: relative;
+  }
+  .second button {
+    background-color: rgb(245, 200, 66);
+    margin-top: 7px;
+    font-weight: 500;
+    font-family: Inter, sans-serif;
+    color: rgb(54, 52, 52);
+    padding: 15px;
+    width: 400px;
+  }
+}
+@media (max-width:450px){
+  .second button{
+    width: 250px;
+  }
+}
