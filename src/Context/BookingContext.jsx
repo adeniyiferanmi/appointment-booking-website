@@ -12,6 +12,9 @@ const BookingProvider = ({ children }) => {
   const baseUrl = import.meta.env.VITE_BASE_URL
   const navigate = useNavigate()
 
+
+  
+
   const generateDates = (numDays = 20) => {
     const dates = [];
     const today = new Date();
