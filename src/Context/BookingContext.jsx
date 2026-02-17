@@ -16,7 +16,7 @@ const BookingProvider = ({ children }) => {
 
 
 
-  
+
   const generateDates = (numDays = 20) => {
     const dates = [];
     const today = new Date();
@@ -54,13 +54,11 @@ const BookingProvider = ({ children }) => {
       if (booking.ok) {
         toast.success("appointment booked successfully")
         navigate("/successpage")
-        alert("clicked");
 
       }
     } catch (error) {
       toast.error("error occured")
       console.log(error);
-      alert("clicked");
 
       
     }finally{
