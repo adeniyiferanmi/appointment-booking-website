@@ -13,8 +13,10 @@ const BookingProvider = ({ children }) => {
   const navigate = useNavigate()
 
 
-  
 
+
+
+  
   const generateDates = (numDays = 20) => {
     const dates = [];
     const today = new Date();
