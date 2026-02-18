@@ -49,7 +49,6 @@ const BookingProvider = ({ children }) => {
         },
       })
       const res =await booking.json()
-      console.log(res);
       
       if (booking.ok) {
         toast.success("appointment booked successfully")
