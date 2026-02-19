@@ -7,15 +7,10 @@ const BookingProvider = ({ children }) => {
   const [activeService, setActiveService] = useState(null);
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTime, setSelectedTime] = useState(null);
-  const [bookingDetail,setBookingDetail] = useState(false)
+  const [bookingDetail, setBookingDetail] = useState(false);
   const [step, setStep] = useState(1);
-  const baseUrl = import.meta.env.VITE_BASE_URL
-  const navigate = useNavigate()
-
-
-
-
-
+  const baseUrl = import.meta.env.VITE_BASE_URL;
+  const navigate = useNavigate();
 
   const generateDates = (numDays = 20) => {
     const dates = [];
@@ -39,33 +34,45 @@ const BookingProvider = ({ children }) => {
   const availableDates = useMemo(() => generateDates(20), []);
 
   const bookingDetails = async (data) => {
-    setBookingDetail(true)
+    setBookingDetail(true);
+    const completeBooking = {
+      ...data,
+      service: localStorage.getItem("booking_service"),
+      price: localStorage.getItem("booking_price"),
+      day: localStorage.getItem("booking_day"),
+      month: localStorage.getItem("booking_month"),
+      num: localStorage.getItem("booking_num"),
+      time:localStorage.getItem("booking_time")
+    };
     try {
-      const booking = await fetch(`${baseUrl}/booking`,{
-        method:"POST",
-        body:JSON.stringify(data),
+      const booking = await fetch(`${baseUrl}/booking`, {
+        method: "POST",
+        body: JSON.stringify(completeBooking),
         headers: {
           "Content-Type": "application/json",
         },
-      })
-      const res =await booking.json()
-      
-      if (booking.ok) {
-        toast.success("appointment booked successfully")
-        navigate("/successpage")
+      });
+      const res = await booking.json();
 
+      if (booking.ok) {
+        toast.success("appointment booked successfully");
+        navigate("/successpage");
+        (localStorage.removeItem("booking_service"),
+          localStorage.removeItem("booking_price"),
+          localStorage.removeItem("booking_day"),
+          localStorage.removeItem("booking_month"),
+          localStorage.removeItem("booking_num"),
+          localStorage.removeItem("booking_time")
+        )
+          
       }
     } catch (error) {
-      toast.error("error occured")
+      toast.error("error occured");
       console.log(error);
-
-      
-    }finally{
-      setBookingDetail(false)
+    } finally {
+      setBookingDetail(false);
     }
-    
-  }
-  
+  };
 
   const value = {
     setActiveService,
@@ -80,7 +87,7 @@ const BookingProvider = ({ children }) => {
     selectedTime,
     selectedDate,
     step,
-    bookingDetail
+    bookingDetail,
   };
   return (
     <BookingContext.Provider value={value}>{children}</BookingContext.Provider>

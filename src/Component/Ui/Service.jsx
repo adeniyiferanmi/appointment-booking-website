@@ -2,7 +2,13 @@ import React, { useContext, useState } from "react";
 import { BookingContext } from "../../Context/BookingContext";
 
 const Service = () => {
-    const { activeService, setActiveService } = useContext(BookingContext);
+  const { activeService, setActiveService } = useContext(BookingContext);
+  const handleServiceSelect = (service) => {
+    setActiveService(service);
+
+    localStorage.setItem("booking_service", service.title);
+    localStorage.setItem("booking_price", service.price);
+  };
   const services = [
     {
       id: 1,
@@ -55,10 +61,10 @@ const Service = () => {
                 <div
                   className="appointment-icon"
                   key={service.id}
-                  onClick={() => setActiveService(service)}
+                  onClick={() => handleServiceSelect(service)}
                   style={{
                     border:
-                      activeService?.id=== service.id
+                      activeService?.id === service.id
                         ? "2px solid rgb(138, 32, 138)"
                         : "none",
                   }}
@@ -82,7 +88,6 @@ const Service = () => {
             </div>
           ))}
         </div>
-      
       </div>
     </div>
   );

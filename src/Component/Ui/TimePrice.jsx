@@ -2,6 +2,17 @@ import React, { useContext } from "react";
 import { BookingContext } from "../../Context/BookingContext";
 
 const TimePrice = () => {
+  const handleDateSelect = (date) => {
+    setSelectedDate(date);
+    localStorage.setItem("booking_day", date.day);
+    localStorage.setItem("booking_month", date.month);
+    localStorage.setItem("booking_num", date.num);
+  };
+  const handletimeSelect = (time) => {
+    setSelectedTime(time);
+    localStorage.setItem("booking_time", time);
+    
+  };
   const {
     activeService,
     selectedDate,
@@ -51,7 +62,7 @@ const TimePrice = () => {
               <div
                 // className='date-box'
                 key={index}
-                onClick={() => setSelectedDate(date)}
+                onClick={() => handleDateSelect(date)}
                 className={
                   selectedDate?.fullDate === date.fullDate
                     ? "selected"
@@ -78,7 +89,7 @@ const TimePrice = () => {
                     {time.map((slot) => (
                       <div
                         key={slot}
-                        onClick={() => setSelectedTime(slot)}
+                        onClick={() => handletimeSelect(slot)}
                         className={
                           selectedTime === slot ? "selected-time" : "time-box"
                         }
