@@ -42,7 +42,7 @@ const BookingProvider = ({ children }) => {
       day: localStorage.getItem("booking_day"),
       month: localStorage.getItem("booking_month"),
       num: localStorage.getItem("booking_num"),
-      time:localStorage.getItem("booking_time")
+      time: localStorage.getItem("booking_time"),
     };
     try {
       const booking = await fetch(`${baseUrl}/booking`, {
@@ -54,17 +54,26 @@ const BookingProvider = ({ children }) => {
       });
       const res = await booking.json();
 
-      if (booking.ok) {
-        toast.success("appointment booked successfully");
-        navigate("/successpage");
-        (localStorage.removeItem("booking_service"),
-          localStorage.removeItem("booking_price"),
-          localStorage.removeItem("booking_day"),
-          localStorage.removeItem("booking_month"),
-          localStorage.removeItem("booking_num"),
-          localStorage.removeItem("booking_time")
-        )
-          
+      if (res.status === "successful" || res.status === "success") {
+        const newBookingId = res.booking._id;
+        console.log(newBookingId);
+        
+        const emailres = await fetch(
+          `${baseUrl}/booking/send-email/${newBookingId}`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email: data.email }),
+          },
+        );
+        const emailData = await emailres.json();
+        console.log("Full Email Response Object:", emailData); // Check this in Browser Console
+        console.log("Email Status:", emailData.status);
+        if (emailData === "success") {
+          toast.success("appointment booked successfully");
+          navigate("/successpage");
+          localStorage.clear();
+        } 
       }
     } catch (error) {
       toast.error("error occured");
