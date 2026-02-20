@@ -1,5 +1,5 @@
 import React, { createContext, useMemo, useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
 export const BookingContext = createContext();
@@ -56,7 +56,6 @@ const BookingProvider = ({ children }) => {
 
       if (res.status === "successful" || res.status === "success") {
         const newBookingId = res.booking._id;
-        console.log(newBookingId);
         
         const emailres = await fetch(
           `${baseUrl}/booking/send-email/${newBookingId}`,
@@ -67,9 +66,8 @@ const BookingProvider = ({ children }) => {
           },
         );
         const emailData = await emailres.json();
-        console.log("Full Email Response Object:", emailData); // Check this in Browser Console
-        console.log("Email Status:", emailData.status);
-        if (emailData === "success") {
+
+        if (emailData.status === "success") {
           toast.success("appointment booked successfully");
           navigate("/successpage");
           localStorage.clear();
@@ -77,7 +75,6 @@ const BookingProvider = ({ children }) => {
       }
     } catch (error) {
       toast.error("error occured");
-      console.log(error);
     } finally {
       setBookingDetail(false);
     }
