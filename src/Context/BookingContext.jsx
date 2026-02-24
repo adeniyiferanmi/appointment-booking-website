@@ -71,7 +71,10 @@ const BookingProvider = ({ children }) => {
           toast.success("appointment booked successfully");
           navigate("/successpage");
           localStorage.clear();
-        } 
+        } else {
+           toast.success("appointment booked successfully email failed");
+          navigate("/successpage");
+        }
       }
     } catch (error) {
       toast.error("error occured");
