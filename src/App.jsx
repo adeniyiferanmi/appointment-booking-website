@@ -7,7 +7,7 @@ import BookingProvider from './Context/BookingContext'
 import { Toaster } from 'sonner'
 // import SuccessPage from './Component/Pages/successPage'
 import ScrollToHash from './Context/ScrollContext'
-import SuccessPage from './Component/Pages/SuccessPage'
+// import SuccessPage from './Component/Pages/SuccessPage'
 
 function App() {
 
@@ -20,7 +20,7 @@ function App() {
     <Routes>
     <Route path='/' element={<Dashboard/>}/>
     <Route path='/appointment' element={<Appointment/>}/>
-    <Route path='/successpage' element={<SuccessPage/>}/>
+    {/* <Route path='/successpage' element={<SuccessPage/>}/> */}
     </Routes>
     </BookingProvider>
     </BrowserRouter>

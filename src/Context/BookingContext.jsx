@@ -9,6 +9,8 @@ const BookingProvider = ({ children }) => {
   const [selectedTime, setSelectedTime] = useState(null);
   const [bookingDetail, setBookingDetail] = useState(false);
   const [step, setStep] = useState(1);
+  const [bookingSuccess, setBookingSuccess] = useState(false);
+
   const baseUrl = import.meta.env.VITE_BASE_URL;
   const navigate = useNavigate();
 
@@ -56,7 +58,7 @@ const BookingProvider = ({ children }) => {
 
       if (res.status === "successful" || res.status === "success") {
         const newBookingId = res.booking._id;
-        
+
         const emailres = await fetch(
           `${baseUrl}/booking/send-email/${newBookingId}`,
           {
@@ -69,11 +71,12 @@ const BookingProvider = ({ children }) => {
 
         if (emailData.status === "success") {
           toast.success("appointment booked successfully");
-          navigate("/successpage");
+          setBookingSuccess(true);
           localStorage.clear();
         } else {
-           toast.success("appointment booked successfully email failed");
-          navigate("/successpage");
+          toast.success("appointment booked successfully email failed");
+          setBookingSuccess(true);
+          localStorage.clear();
         }
       }
     } catch (error) {
@@ -88,15 +91,17 @@ const BookingProvider = ({ children }) => {
     setStep,
     setSelectedDate,
     setSelectedTime,
-    bookingDetails,
+    bookingDetails, 
     nextStep,
     prevStep,
+    setBookingSuccess,
     activeService,
     availableDates,
     selectedTime,
     selectedDate,
     step,
     bookingDetail,
+    bookingSuccess,
   };
   return (
     <BookingContext.Provider value={value}>{children}</BookingContext.Provider>

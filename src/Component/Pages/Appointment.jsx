@@ -1,21 +1,39 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Header from "../Ui/Header";
 import "../Styles/appointment.css";
 import Service from "../Ui/Service";
 import TimePrice from "../Ui/TimePrice";
 import Details from "../Ui/Details";
 import { BookingContext } from "../../Context/BookingContext";
+import SuccessPage from "../Ui/SuccessPage";
 
 const Appointment = () => {
-  const { step, setStep, activeService, selectedTime, selectedDate,prevStep,
-    nextStep
-   } =
-    useContext(BookingContext);
-
-  
-
+  const {
+    step,
+    setStep,
+    activeService,
+    selectedTime,
+    selectedDate,
+    prevStep,
+    nextStep,
+    bookingSuccess,
+    setBookingSuccess,
+    bookingDetails,
+    bookingDetail,
+  } = useContext(BookingContext);
+  useEffect(() => {
+    if (bookingSuccess) {
+      const timer = setTimeout(() => setBookingSuccess(false), 60000);
+      return () => clearTimeout(timer);
+    }
+  }, [bookingSuccess]);
+  if (bookingSuccess) {
+    return (
+      <SuccessPage />
+    )
+  }
   return (
-    <div >
+    <div>
       <div>
         <Header />
       </div>
@@ -33,11 +51,11 @@ const Appointment = () => {
           </p>
         </div>
       </div>
-      <div className="appointment-section1" >
-        <div className="appointment-displays " >
+      <div className="appointment-section1">
+        <div className="appointment-displays ">
           <h6>Book Your Appointment</h6>
           <div className="appointment-headings">
-            <div className={`step-block ${ step === 1 ? "after" : ""}`}>
+            <div className={`step-block ${step === 1 ? "after" : ""}`}>
               <div
                 className={`circle ${step > 1 ? "done" : step === 1 ? "active" : ""}`}
               >
@@ -45,11 +63,11 @@ const Appointment = () => {
               </div>
               <span
                 className={`appointment-span ${step === 1 ? "text-active" : ""}`}
-              > 
-                Select Service 
+              >
+                Select Service
               </span>
             </div>
-            <div className={`step-block ${ step === 2 ? "after" : ""}`}>
+            <div className={`step-block ${step === 2 ? "after" : ""}`}>
               <div
                 className={`circle ${step > 2 ? "done" : step === 2 ? "active" : ""}`}
               >
@@ -64,7 +82,9 @@ const Appointment = () => {
             </div>
             <div className="step">
               <div className={`circle ${step === 3 ? " active" : ""}`}>3</div>
-              <span className={`appointment-span ${step === 3 ? "text-actives" : ""}`}>
+              <span
+                className={`appointment-span ${step === 3 ? "text-actives" : ""}`}
+              >
                 {" "}
                 Your Details
               </span>
@@ -87,7 +107,7 @@ const Appointment = () => {
             </div>
             {step === 2 && <TimePrice />}
             {step === 2 && (
-              <div className="button-divs" >
+              <div className="button-divs">
                 <div className="back-button-div">
                   <button className="back-button" onClick={prevStep}>
                     <i class="bi bi-chevron-left"></i> Back
