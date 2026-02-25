@@ -14,7 +14,7 @@ const Details = () => {
     bookingDetail,
     prevStep,
   } = useContext(BookingContext);
-  
+
   const bookingShema = yup.object({
     fullName: yup.string().required("Full Name is required"),
     email: yup.string().required("email is required"),
@@ -41,7 +41,7 @@ const Details = () => {
   };
   return (
     <div>
-      {bookingDetail !== undefined &&(
+      {bookingDetail !== undefined && (
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="form-content">
             <div className="form-container">
@@ -55,7 +55,9 @@ const Details = () => {
                       placeholder="Your Full Name"
                       {...register("fullName")}
                     />
-                    {errors.fullName && <p className="error-message">{errors.fullName.message}</p>}
+                    {errors.fullName && (
+                      <p className="error-message">{errors.fullName.message}</p>
+                    )}
                   </div>
                   <div>
                     <label htmlFor="">Email Address</label>
@@ -64,8 +66,9 @@ const Details = () => {
                       placeholder="Your@gmail.com"
                       {...register("email")}
                     />
-                    {errors.email && <p className="error-message">{errors.email.message}</p>}
-
+                    {errors.email && (
+                      <p className="error-message">{errors.email.message}</p>
+                    )}
                   </div>
                   <div>
                     <label htmlFor="">Phone Number</label>
@@ -74,8 +77,11 @@ const Details = () => {
                       placeholder="+234 9014 541 123"
                       {...register("phoneNumber")}
                     />
-                    {errors.phoneNumber && <p className="error-message">{errors.phoneNumber.message}</p>}
-
+                    {errors.phoneNumber && (
+                      <p className="error-message">
+                        {errors.phoneNumber.message}
+                      </p>
+                    )}
                   </div>
                   <div>
                     <label htmlFor="">Special Request</label>
@@ -85,8 +91,9 @@ const Details = () => {
                       placeholder="Any special request or notes..."
                       {...register("message")}
                     ></textarea>
-                    {errors.message && <p className="error-message">{errors.message.message}</p>}
-
+                    {errors.message && (
+                      <p className="error-message">{errors.message.message}</p>
+                    )}
                   </div>
                 </div>
               </div>
@@ -133,12 +140,16 @@ const Details = () => {
             <div className="service-button-div confirm">
               <button className="service-button" type="submit">
                 {bookingDetail === true ? (
-                  // <i className="bi bi-arrow-clockwise animate-spin"></i>
-                 `loading....`
+                  <i
+                    className="bi bi-arrow-clockwise animate-spin"
+                    style={{ fontSize: "20px" }}
+                  ></i>
                 ) : (
-                  "CONFIRM BOOKING"
+                  <>
+                    CONFIRM BOOKING{" "}
+                    <i class="bi bi-check2" style={{ fontSize: "20px" }}></i>
+                  </>
                 )}
-                <i class="bi bi-check2" style={{ fontSize: "20px" }}></i>
               </button>
             </div>
           </div>
