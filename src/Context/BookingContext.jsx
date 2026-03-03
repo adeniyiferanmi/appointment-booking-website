@@ -11,6 +11,8 @@ const BookingProvider = ({ children }) => {
   const [step, setStep] = useState(1);
   const [bookingSuccess, setBookingSuccess] = useState(false);
 
+
+
   const baseUrl = import.meta.env.VITE_BASE_URL;
   const navigate = useNavigate();
 
@@ -102,6 +104,7 @@ const BookingProvider = ({ children }) => {
     step,
     bookingDetail,
     bookingSuccess,
+   
   };
   return (
     <BookingContext.Provider value={value}>{children}</BookingContext.Provider>

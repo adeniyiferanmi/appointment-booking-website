@@ -27,13 +27,16 @@ import gallery18 from "../assets/images (3).jpg";
 import Footer from "../Ui/Footer";
 
 const Dashboard = () => {
+  const phoneNumber = import.meta.env.VITE_PHONE_NUMBER;
+  const message = "Hello Limadollz Beauty World! ✨ I would like to book an appointment for a beauty session.";
+
+  const encodedMessage = encodeURIComponent(message);
+  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
   return (
     <div className="dashboard">
       <div>
         <Header />
       </div>
-
-
 
       <div className="dashboard-section1">
         <div className="dashboard-section1-content">
@@ -49,7 +52,7 @@ const Dashboard = () => {
           </p>
           <div className="content-button">
             <a href="/appointment"><button className="button1">Book Appointment</button></a>
-            <a href="#service"><button className="button2">View Services</button></a>
+            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" ><button className="button2"><i class="bi bi-whatsapp"></i> Book via WhatsApp</button></a>
           </div>
         </div>
       </div>
@@ -392,6 +395,11 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
+      <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+      <div className="whatsapp-button">
+        <i className="bi bi-whatsapp"></i>
+      </div>
+      </a>
       <div>
         <Footer />
       </div>
