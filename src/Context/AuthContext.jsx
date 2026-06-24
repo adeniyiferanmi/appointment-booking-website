@@ -8,6 +8,7 @@ const AuthProvider = ({ children }) => {
   const [registeringAdmin, setRegisteringAdmin] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [errorss, setError] = useState(false);
   const [loginAdmin, setLoginAdmin] = useState(false);
   const [adminData, setAdminData] = useState(null);
   const navigate = useNavigate();
@@ -36,10 +37,9 @@ const AuthProvider = ({ children }) => {
       }
       console.log(response);
     } catch (error) {
-         toast.error(error.message || "Something went wrong");
-    }
-    finally{
-        setRegisteringAdmin(false)
+      toast.error(error.message || "Something went wrong");
+    } finally {
+      setRegisteringAdmin(false);
     }
   };
 
@@ -56,21 +56,24 @@ const AuthProvider = ({ children }) => {
         toast.success(response.message);
         localStorage.setItem("token", response.token);
         navigate("/admin-dashboard");
+      } else if (response.status === "error") {
+        setError(response.message);
+      } else if (!res.ok) {
+        setError(response.message || "Something went wrong");
       }
     } catch (error) {
       console.log(error);
-    }
-    finally{
-        setLoginAdmin(false)
+    } finally {
+      setLoginAdmin(false);
     }
   };
 
-  const isAuthenticated = async() => {
+  const isAuthenticated = async () => {
     const token = localStorage.getItem("token");
     if (!token) {
       return false;
     }
-    
+
     try {
       const res = await fetch(`${baseUrl}/auth/verify-token`, {
         method: "POST",
@@ -80,16 +83,16 @@ const AuthProvider = ({ children }) => {
         },
       });
       const response = await res.json();
-      setAdminData(response.user)
-      if(response.status === "success"){
-        return true
+      setAdminData(response.user);
+      if (response.status === "success") {
+        return true;
       }
     } catch (error) {
       console.log(error);
       toast.error(error.message || "Session expired. Please log in again.");
       return false;
     }
-  }
+  };
   const value = {
     registerUser,
     handleConfirmPassword,
@@ -100,7 +103,8 @@ const AuthProvider = ({ children }) => {
     showConfirmPassword,
     showPassword,
     loginAdmin,
-    adminData
+    adminData,
+    errorss,
   };
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };

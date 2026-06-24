@@ -6,29 +6,32 @@ import img2 from "../assets/fc15375f-65e9-4a62-9781-fefaaaa46058.png";
 import img3 from "../assets/17c204c1-4e44-4957-b07a-ba224bdbd0be.png";
 import img4 from "../assets/31d32104-9eba-45cb-adfa-083007210510.png";
 
-import gallery1 from "../assets/istockphoto-2210288471-612x612.jpg";
-import gallery2 from "../assets/istockphoto-1952511070-612x612.jpg";
-import gallery3 from "../assets/istockphoto-1277309408-612x612.jpg";
-import gallery4 from "../assets/shopping.webp";
-import gallery5 from "../assets/images (1).jpg";
-import gallery6 from "../assets/download (3).jpg";
-import gallery7 from "../assets/photo-1522335789203-aabd1fc54bc9.avif";
-import gallery8 from "../assets/shopping (1).webp";
-import gallery9 from "../assets/images.jpg";
-import gallery10 from "../assets/download (3).jpg";
-import gallery11 from "../assets/download (5).jpg";
-import gallery12 from "../assets/240_F_394216195_0aCZg5Gl3zHNAtwCEZI9igJRoqmBXyqN.jpg";
-import gallery13 from "../assets/download (6).jpg";
-import gallery14 from "../assets/download (7).jpg";
-import gallery15 from "../assets/download (8).jpg";
-import gallery16 from "../assets/download (9).jpg";
-import gallery17 from "../assets/images (2).jpg";
-import gallery18 from "../assets/images (3).jpg";
+import gallery1 from "../assets/WhatsApp Image 20.jpeg";
+import gallery2 from "../assets/WhatsApp Image 2026-03-.jpeg";
+import gallery3 from "../assets/WhatsApp Image 2026-03-17 at 9.35.49 A.jpeg";
+import gallery4 from "../assets/WhatsApp Image 2026-03-17 at 9.35.49 AM.jpeg";
+import gallery5 from "../assets/WhatsApp Image 2026-03-17 at 9.35.49.jpeg";
+import gallery6 from "../assets/WhatsApp Image 2026-03-31 .jpeg";
+import gallery7 from "../assets/WhatsApp Image 2026-03-31 at 11.09..jpeg";
+import gallery8 from "../assets/WhatsApp Image 2026-03-31 at 11.09.3.jpeg";
+import gallery9 from "../assets/WhatsApp Image 2026-03-31 at 11.09.34 .jpeg";
+import gallery10 from "../assets/WhatsApp Image 2026-03-31 at 11.09.34 .jpeg";
+import gallery11 from "../assets/WhatsApp Image 2026-03-31 at 11.09.36 .jpeg";
+import gallery12 from "../assets/WhatsApp Image 2026-03-31 at 11.09.36 .jpeg";
+import gallery13 from "../assets/WhatsApp Image 2026-03-31 at 11.09.36 P.jpeg";
+import gallery14 from "../assets/WhatsApp Image 2026-03-31 at 11.09.36 PM.jpeg";
+import gallery15 from "../assets/WhatsApp Image 2026-03-31 at 11.09.36.jpeg";
+import gallery16 from "../assets/WhatsApp Image 2026-03-31 at 11.13..jpeg";
+import gallery17 from "../assets/WhatsApp Image 2026-03-31 at 11.jpeg";
+import gallery18 from "../assets/WhatsApp Image 2026-03-31.jpeg";
+import gallery19 from "../assets/WhatsApp Image 2026-03.jpeg";
+
 import Footer from "../Ui/Footer";
 
 const Dashboard = () => {
   const phoneNumber = import.meta.env.VITE_PHONE_NUMBER;
-  const message = "Hello Limadollz Beauty World! ✨ I would like to book an appointment for a beauty session.";
+  const message =
+    "Hello Limadollz Beauty World! ✨ I would like to book an appointment for a beauty session.";
 
   const encodedMessage = encodeURIComponent(message);
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
@@ -51,8 +54,14 @@ const Dashboard = () => {
             unique radiance.
           </p>
           <div className="content-button">
-            <a href="/appointment"><button className="button1">Book Appointment</button></a>
-            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" ><button className="button2"><i class="bi bi-whatsapp"></i> Book via WhatsApp</button></a>
+            <a href="/appointment">
+              <button className="button1">Book Appointment</button>
+            </a>
+            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+              <button className="button2">
+                <i class="bi bi-whatsapp"></i> Book via WhatsApp
+              </button>
+            </a>
           </div>
         </div>
       </div>
@@ -167,13 +176,19 @@ const Dashboard = () => {
             <div className="gallery-image">
               <img src={gallery1} alt="" />
               <div className="gallery-overlay">
-                <span>Hair</span>
+                <span>Tattoo</span>
+              </div>
+            </div>
+            <div className="gallery-image">
+              <img src={gallery1} alt="" />
+              <div className="gallery-overlay">
+                <span>Tattoo</span>
               </div>
             </div>
             <div className="gallery-image">
               <img src={gallery2} alt="" />
               <div className="gallery-overlay">
-                <span>Hair</span>
+                <span>Tattoo</span>
               </div>
             </div>
             <div className="gallery-image">
@@ -185,7 +200,7 @@ const Dashboard = () => {
             <div className="gallery-image">
               <img src={gallery4} alt="" />
               <div className="gallery-overlay">
-                <span>Tatoo</span>
+                <span>Make Up</span>
               </div>
             </div>
             <div className="gallery-image">
@@ -198,44 +213,44 @@ const Dashboard = () => {
             <div className="gallery-image">
               <img src={gallery12} alt="" />
               <div className="gallery-overlay">
-                <span>Hair</span>
+                <span>Lashes</span>
               </div>
             </div>
             <div className="gallery-image">
               <img src={gallery5} alt="" />
               <div className="gallery-overlay">
-                <span>Make Up</span>
+                <span>Hair</span>
               </div>
             </div>
             <div className="gallery-image">
               <img src={gallery7} alt="" />
               <div className="gallery-overlay">
-                <span>Make Up</span>
+                <span>Brow</span>
               </div>
             </div>
             <div className="gallery-image">
               <img src={gallery9} alt="" />
               <div className="gallery-overlay">
-                <span>Hair</span>
+                <span>Make Up</span>
               </div>
             </div>
             <div className="gallery-image">
               <img src={gallery8} alt="" />
               <div className="gallery-overlay">
-                <span>Tatoo</span>
+                <span>Lashes</span>
               </div>
             </div>
 
             <div className="gallery-image">
               <img src={gallery1} alt="" />
               <div className="gallery-overlay">
-                <span>Hair</span>
+                <span>Tatoo</span>
               </div>
             </div>
             <div className="gallery-image">
               <img src={gallery11} alt="" />
               <div className="gallery-overlay">
-                <span>Make Up</span>
+                <span>Lashes</span>
               </div>
             </div>
             <div className="gallery-image">
@@ -247,19 +262,19 @@ const Dashboard = () => {
             <div className="gallery-image">
               <img src={gallery13} alt="" />
               <div className="gallery-overlay">
-                <span>Make Up</span>
+                <span>Hair</span>
               </div>
             </div>
             <div className="gallery-image">
               <img src={gallery14} alt="" />
               <div className="gallery-overlay">
-                <span>Tatoo</span>
+                <span>Hair</span>
               </div>
             </div>
             <div className="gallery-image">
               <img src={gallery15} alt="" />
               <div className="gallery-overlay">
-                <span>Brows and Lashes</span>
+                <span>Hair</span>
               </div>
             </div>
             <div className="gallery-image">
@@ -271,7 +286,7 @@ const Dashboard = () => {
             <div className="gallery-image">
               <img src={gallery17} alt="" />
               <div className="gallery-overlay">
-                <span>Brows and Lashes</span>
+                <span>Hair and Make UP</span>
               </div>
             </div>
             <div className="gallery-image">
@@ -389,16 +404,17 @@ const Dashboard = () => {
                 Appointments are limited to ensure personalized attention for
                 every client.
               </p>
-             <a href="/appointment"><button>Book Appointment</button></a>
+              <a href="/appointment">
+                <button>Book Appointment</button>
+              </a>
             </div>
-            
           </div>
         </div>
       </div>
       <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
-      <div className="whatsapp-button">
-        <i className="bi bi-whatsapp"></i>
-      </div>
+        <div className="whatsapp-button">
+          <i className="bi bi-whatsapp"></i>
+        </div>
       </a>
       <div>
         <Footer />
